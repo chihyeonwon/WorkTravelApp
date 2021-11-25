@@ -6,9 +6,9 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <View>
-        <Text>Work</Text>
-        <Text>Travel</Text>
+      <View style={styles.header}>
+        <Text style={styles.btnText}>Work</Text>
+        <Text style={styles.btnText}>Travel</Text>
       </View>
     </View>
   );
@@ -17,8 +17,19 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#000',
+    paddingHorizontal: 20,
   },
+  header: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    marginTop: 100,
+
+  },
+  btnText: {
+    fontSize: 38,
+    fontWeight: '600',
+    color: 'white',
+
+  }
 });
