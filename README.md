@@ -42,4 +42,28 @@ const styles = StyleSheet.create({
 });
 ```
 
+테마 배경색을 지정해주는 theme을 export하는 colors.js 파일을 생성한다.
+
+```javascript
+export const theme = {
+    background:'black',
+    grey: '#3A3D40',
+};
+```
+
+App.js에서 theme을 import 한다.
+```javascript
+import { theme } from './colors';
+```
+
+colors.js 파일의 theme을 사용해 배경색을 바꿔준다.
+```javascript
+container: {
+    flex: 1,
+    backgroundColor: theme.background,
+    paddingHorizontal: 20,
+  },
+```
+          
+
 
