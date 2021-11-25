@@ -6,10 +6,10 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <View style={styles.header}>
-        <Text style={styles.btnText}>Work</Text>
-        <Text style={styles.btnText}>Travel</Text>
-      </View>
+        <View style={styles.header}>
+          <Text style={styles.btnText}>Work</Text>
+          <Text style={styles.btnText}>Travel</Text>
+        </View>
     </View>
   );
 }
@@ -24,12 +24,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
     marginTop: 100,
-
   },
   btnText: {
     fontSize: 38,
     fontWeight: '600',
     color: 'white',
-
-  }
+  },
 });
