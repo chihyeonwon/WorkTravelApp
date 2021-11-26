@@ -64,6 +64,46 @@ container: {
     paddingHorizontal: 20,
   },
 ```
+Work, Travel Text를 onPress 했을 때 효과를 주는 TouchableOpacity를 import 하고 work, travel을 TouchableOpacity로 감싸준다.
+```javascript
+import {TouchableOpacity} from 'react-native';
+
+<TouchableOpacity>
+            <Text style={styles.btnText}>Work</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={styles.btnText}>Travel</Text>  
+</TouchableOpacity>
+```
+
+work일때와 travel일 때 상태를 저장하는 state 생성한다.
+```javascript
+const [working, setWorking] = useState(true); // work일때 상태를 저장하는 useState 함수 생성
+  const travel = () => setWorking(false);
+  const work = () => setWorking(true);  
+```
+
+TouchableOpacity의 onPress(터치했을때 { }안의 함수를 실행시켜주는 속성)에 work 함수와 travel 함수를 넣어준다.
+```javascript
+<TouchableOpacity onPress={work}>
+            <Text style={styles.btnText}>Work</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={travel}>
+            <Text style={styles.btnText}>Travel</Text>  
+</TouchableOpacity>
+```
+
+work와 Travel 둘 중에 선택하는 Text에 따라 work와 travel함수를 실행시켜서 바뀐 working 상태(true or false)에 따라서 폰트 색깔을 변경한다.
+```javascript
+<TouchableOpacity onPress={work}>
+            <Text style={{...styles.btnText, color: working ? "white" : "theme.grey"}}>Work</Text>
+</TouchableOpacity>
+<TouchableOpacity onPress={travel}>
+            <Text style={{...styles.btnText, color: !working ? "white" : "theme.grey"}}>Travel</Text>  
+</TouchableOpacity>
+```
           
+        
+      
 
 
