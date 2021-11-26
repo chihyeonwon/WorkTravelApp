@@ -12,10 +12,10 @@ export default function App() {
       <StatusBar style="auto" />
         <View style={styles.header}>
           <TouchableOpacity onPress={work}>
-            <Text style={styles.btnText}>Work</Text>
+            <Text style={{...styles.btnText, color: working ? "white" : "theme.grey"}}>Work</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={travel}>
-            <Text style={styles.btnText}>Travel</Text>  
+            <Text style={{...styles.btnText, color: !working ? "white" : "theme.grey"}}>Travel</Text>  
           </TouchableOpacity>
         </View>
     </View>
@@ -36,6 +36,5 @@ const styles = StyleSheet.create({
   btnText: {
     fontSize: 38,
     fontWeight: '600',
-    color: 'white',
   },
 });
