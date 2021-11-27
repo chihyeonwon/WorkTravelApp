@@ -42,5 +42,9 @@ const styles = StyleSheet.create({
   },
   input: {
     backgroundColor: 'white',
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    borderRadius: 30,
+    marginTop: 20,
   }
 });
