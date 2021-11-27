@@ -5,8 +5,10 @@ import { theme } from './colors';
 
 export default function App() { 
   const [working, setWorking] = useState(true); // work일때 상태를 저장하는 useState 함수 생성
+  const [text, setText] = useState(""); // 입력한 Text를 저장하는 state 함수 생성
   const travel = () => setWorking(false);
   const work = () => setWorking(true);  
+  const onChangeText = (payload) => setText(payload); // payload = event
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
@@ -16,10 +18,15 @@ export default function App() {
           </TouchableOpacity>
           <TouchableOpacity onPress={travel}>
             <Text style={{ ...styles.btnText, color: !working ? "white" : theme.grey }}>Travel</Text>  
-          </TouchableOpacity>
+          </TouchableOpacity> 
         </View>
         <View>
-          <TextInput style={styles.input} placeholder={working ? 'Add a To Do' : 'Where do you want to go?'} />
+          <TextInput 
+            style={styles.input}
+            value={text} 
+            placeholder={working ? 'Add a To Do' : 'Where do you want to go?'}
+            onChangeText={onChangeText}  
+          />
         </View>
     </View>
   );
@@ -46,6 +53,5 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: 30,
     marginTop: 20,
-    fontSize: 18,
   }
 });
