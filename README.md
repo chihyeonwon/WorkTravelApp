@@ -96,13 +96,21 @@ TouchableOpacity의 onPress(터치했을때 { }안의 함수를 실행시켜주�
 work와 Travel 둘 중에 선택하는 Text에 따라 work와 travel함수를 실행시켜서 바뀐 working 상태(true or false)에 따라서 폰트 색깔을 변경한다.
 ```javascript
 <TouchableOpacity onPress={work}>
-            <Text style={{...styles.btnText, color: working ? "white" : "theme.grey"}}>Work</Text>
-</TouchableOpacity>
-<TouchableOpacity onPress={travel}>
-            <Text style={{...styles.btnText, color: !working ? "white" : "theme.grey"}}>Travel</Text>  
+            <Text style={{ ...styles.btnText, color: working ? "white" : theme.grey }}>Work</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={travel}>
+            <Text style={{ ...styles.btnText, color: !working ? "white" : theme.grey }}>Travel</Text>  
 </TouchableOpacity>
 ```
-          
+
+## 텍스트 입력창 생성하기
+
+텍스트 입력을 지원하는 TextInput을 react-native에서 import한다.
+```javascript
+import {TextInput} from 'react-native';
+```
+
+
         
       
 
