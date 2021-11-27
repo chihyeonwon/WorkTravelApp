@@ -12,11 +12,14 @@ export default function App() {
       <StatusBar style="auto" />
         <View style={styles.header}>
           <TouchableOpacity onPress={work}>
-            <Text style={{...styles.btnText, color: working ? "white" : "theme.grey"}}>Work</Text>
+            <Text style={{ ...styles.btnText, color: working ? "white" : theme.grey }}>Work</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={travel}>
-            <Text style={{...styles.btnText, color: !working ? "white" : "theme.grey"}}>Travel</Text>  
+            <Text style={{ ...styles.btnText, color: !working ? "white" : theme.grey }}>Travel</Text>  
           </TouchableOpacity>
+        </View>
+        <View>
+          <TextInput style={styles.input} />
         </View>
     </View>
   );
@@ -37,4 +40,7 @@ const styles = StyleSheet.create({
     fontSize: 38,
     fontWeight: '600',
   },
+  input: {
+    backgroundColor: 'white',
+  }
 });
