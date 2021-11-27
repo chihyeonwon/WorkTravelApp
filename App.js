@@ -19,7 +19,7 @@ export default function App() {
           </TouchableOpacity>
         </View>
         <View>
-          <TextInput style={styles.input} />
+          <TextInput style={styles.input} placeholder={working ? 'Add a To Do' : 'Where do you want to go?'} />
         </View>
     </View>
   );
