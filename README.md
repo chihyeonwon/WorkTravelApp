@@ -110,8 +110,46 @@ work와 Travel 둘 중에 선택하는 Text에 따라 work와 travel함수를 �
 import {TextInput} from 'react-native';
 ```
 
+TextInput의 배경색을 흰색으로 변경한다.
+```javascript
+<TextInput style={styles.input} />
 
-        
-      
+input: {
+          backgroundColor: 'white',
+}
+```
+
+TextInput의 속성 중 placeholder를 사용하여 working일때는 'Add a To do' 문구를 working이 아닐 때는 'Where do you want to go' 문구를 넣는다.
+```javascript
+          <TextInput style={styles.input} placeholder={working ? 'Add a To Do' : 'Where do you want to go?'} />
+```
+
+TextInput의 paddingVertical, paddingHorizontal, borderRadius marginTop, fontSize를 지정하여 꾸며준다.
+```javascript
+ input: {
+    backgroundColor: 'white',
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    borderRadius: 30,
+    marginTop: 20,
+    fontSize: 18,
+  }
+```
+TextInput에 입력한 Text를 저장하는 state 배열을 생성한다.
+```javascript
+ const [text, setText] = useState(""); // 입력한 Text를 저장하는 state 함수 생성
+ ```
+TextInput에 입력한 Text의 상태를 setText의 payload로 저장하는 onChangeText 함수를 생성한다.
+```javascript
+const onChangeText = (payload) => setText(payload); // payload = event
+```
+TextInput의 onChangeText 속성을 사용해 TextInput의 텍스트가 변경되었을 때 onChangeText 함수가 실행되도록 하고 입력한 Text값을 value로 저장한다.
+```javascript
+<TextInput 
+            style={styles.input}
+            value={text} 
+            placeholder={working ? 'Add a To Do' : 'Where do you want to go?'}
+            onChangeText={onChangeText}  
+/>      
 
 
