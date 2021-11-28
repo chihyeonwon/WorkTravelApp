@@ -9,6 +9,9 @@ export default function App() {
   const travel = () => setWorking(false);
   const work = () => setWorking(true);  
   const onChangeText = (payload) => setText(payload); // payload = event
+  const addToDo = () => {
+    alert(text);
+  }
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
@@ -25,7 +28,8 @@ export default function App() {
             style={styles.input}
             value={text} 
             placeholder={working ? 'Add a To Do' : 'Where do you want to go?'}
-            onChangeText={onChangeText}  
+            onChangeText={onChangeText} 
+            onSubmitEditing={addToDo}  
           />
         </View>
     </View>
