@@ -14,8 +14,13 @@ export default function App() {
     if(text === "") {
       return
     }
-    // save to do
+    const newToDos = Object.assign(
+      {}, // Target Object
+      toDos, // 기존의 toDos
+      {[Date.now()]: {text, work: working}} // 새로운 toDos
+    );
     setText("");
+    setToDos(newToDos);
   }
   return (
     <View style={styles.container}>
