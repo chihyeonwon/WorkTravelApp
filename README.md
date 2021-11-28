@@ -151,5 +151,34 @@ TextInput의 onChangeText 속성을 사용해 TextInput의 텍스트가 변경�
             placeholder={working ? 'Add a To Do' : 'Where do you want to go?'}
             onChangeText={onChangeText}  
 />      
+```
 
+TextInput의 onSubmitEditing 속성을 사용하여 텍스트를 입력하고 확인을 눌렀을 때 addToDo 함수가 발생하도록 설정한다.
+```javascript
+<TextInput onSubmitEditing={addToDo} />
+```
 
+TextInput의 returnKeyType 속성을 사용하여 키보드의 확인기능을 done으로 수정한다.
+```javascript
+<TextInput returnKeyType="done" />
+```
+함수 addToDo를 text가 비어있으면 그냥 return 하고 text가 들어있으면 저장하는 함수로 변경한다.
+```javascript
+const addToDo = () => {
+    if(text === "") {
+      return
+    }
+    // save to do
+    setText("");
+  }
+```
+
+입력하는 텍스트들(toDos)을 저장하고 상태를 관리하는 useState 함수를 Object로 생성한다.
+```javascript
+const [toDos, setTodos] = useState({});
+```
+
+state의 수정없이 Object를 결합하는 Object.assign을 사용하여 이전의 todo와 새로운 todo를 결합해서 결과값을 newTodos 변수에 저장한다.
+```javascript
+const newTodos = Object.assign({}, toDos, {[Date.now()]: {text, work: working}};
+```
