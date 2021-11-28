@@ -30,6 +30,7 @@ export default function App() {
             placeholder={working ? 'Add a To Do' : 'Where do you want to go?'}
             onChangeText={onChangeText} 
             onSubmitEditing={addToDo}  
+            returnKeyType="done"
           />
         </View>
     </View>
