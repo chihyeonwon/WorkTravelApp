@@ -182,3 +182,19 @@ state의 수정없이 Object를 결합하는 Object.assign을 사용하여 이�
 ```javascript
 const newTodos = Object.assign({}, toDos, {[Date.now()]: {text, work: working}};
 ```
+
+세 객체를 결합한 newToDos를 setToDos의 매개변수로 넣는다.
+```javascript
+const addToDo = () => {
+    if(text === "") {
+      return
+    }
+    const newToDos = Object.assign(
+      {}, // Target Object
+      toDos, // 기존의 toDos
+      {[Date.now()]: {text, work: working}} // 새로운 toDos
+    );
+    setText("");
+    setToDos(newToDos);
+  }          
+```
