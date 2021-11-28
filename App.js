@@ -5,12 +5,17 @@ import { theme } from './colors';
 
 export default function App() { 
   const [working, setWorking] = useState(true); // work일때 상태를 저장하는 useState 함수 생성
-  const [text, setText] = useState(""); // 입력한 Text를 저장하는 state 함수 생성
+  const [text, setText] = useState(""); // 입력한 Text의 상태를 저장하는 useState 함수 생성
+  const [toDos, setToDos] = useState({}); // toDos의 상태를 저장하는 useState 함수 생성
   const travel = () => setWorking(false);
   const work = () => setWorking(true);  
   const onChangeText = (payload) => setText(payload); // payload = event
   const addToDo = () => {
-    alert(text);
+    if(text === "") {
+      return
+    }
+    // save to do
+    setText("");
   }
   return (
     <View style={styles.container}>
