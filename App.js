@@ -73,11 +73,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: 30,
     marginTop: 20,
+    marginVertical: 20,
   },
   toDo: {
-
+    backgroundColor: theme.toDoBackground,
+    marginBottom: 10,
+    paddingVertical: 20,
+    paddingHorizontal: 20,
+    borderRadius: 15,
   },
   toDoText: {
     color: 'white',
+    fontSize: 16,
+    fontWeight:"500",
   }
 });
