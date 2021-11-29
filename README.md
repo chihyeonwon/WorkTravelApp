@@ -198,3 +198,43 @@ const addToDo = () => {
     setToDos(newToDos);
   }          
 ```
+
+또 다른 방법으로 ES6에서 지원하는 ...toDos를 사용하여 이전 Object를 가지는 새로운 Object를 만들고 새로운 toDo도 추가하는 방법이 있다.
+```javascript
+const newToDos = { ...toDos, [Date.now()]: {text, work: working} };
+```
+
+## 입력한 텍스트(toDo)를 화면에 표시하기
+
+스크롤해서 사용자가 많은 todo를 화면에 추가할 수 있도록 하는 ScrollView를 import한다.
+```javascript
+import { ScrollView } from 'react-native';
+```
+Object의 keys와 map 함수를 사용해서 사용자의 텍스트(toDos)를 화면에 표시한다.
+```javascript
+<ScrollView>
+          {Object.keys(toDos).map(key => 
+                    <View style={styles.toDo} key={key}>
+                              <Text style={styles.toDoText}
+                                        {toDos[key].text}
+                              </Text>
+                    </View>
+          )}
+ </ScrollView>
+ ```
+ 
+ toDo와 toDoText 에 다음 스타일을 적용한다.
+ ```javascript
+ toDo: {
+    backgroundColor: theme.toDoBackground, // color.js 파일에 theme.toDoBackground: "#5C5C60"을 추가한다.
+    marginBottom: 10,
+    paddingVertical: 20,
+    paddingHorizontal: 20,
+    borderRadius: 15,
+  },
+  toDoText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight:"500",
+  }
+```
