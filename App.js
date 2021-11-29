@@ -14,11 +14,7 @@ export default function App() {
     if(text === "") {
       return
     }
-    const newToDos = Object.assign(
-      {}, // Target Object
-      toDos, // 기존의 toDos
-      {[Date.now()]: {text, work: working}} // 새로운 toDos
-    );
+    const newToDos = { ...toDos, [Date.now()]: {text, work: working} };
     setText("");
     setToDos(newToDos);
   }
