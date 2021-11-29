@@ -38,6 +38,15 @@ export default function App() {
             onSubmitEditing={addToDo}  
             returnKeyType="done"
           />
+          <ScrollView>
+            {Object.keys(toDos).map(key =>
+              <View style={styles.toDo} key={key}>
+                <Text style={styles.toDoText}>
+                  {toDos[key].text}
+                </Text>
+              </View>
+            )}
+          </ScrollView>
         </View>
     </View>
   );
@@ -64,5 +73,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: 30,
     marginTop: 20,
+  },
+  toDo: {
+
+  },
+  toDoText: {
+    color: 'white',
   }
 });
