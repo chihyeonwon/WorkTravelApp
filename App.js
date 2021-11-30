@@ -40,11 +40,13 @@ export default function App() {
           />
           <ScrollView>
             {Object.keys(toDos).map(key =>
+              toDos[key].working === working ? (
               <View style={styles.toDo} key={key}>
                 <Text style={styles.toDoText}>
                   {toDos[key].text}
                 </Text>
               </View>
+              ) : null
             )}
           </ScrollView>
         </View>
