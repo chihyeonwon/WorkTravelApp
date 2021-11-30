@@ -14,12 +14,13 @@ export default function App() {
   const saveToDos = async (toSave) => {
     await AsyncStorage.setItem("@toDos", JSON.stringify(toSave));
   };
-  const addToDo = () => {
+  const addToDo = async () => {
     if(text === "") {
       return
     }
     const newToDos = { ...toDos, [Date.now()]: {text, working} };
     setText("");
+    await saveToDos(newToDos);
     setToDos(newToDos);
   }
   return (
