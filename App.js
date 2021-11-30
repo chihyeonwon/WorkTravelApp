@@ -4,6 +4,8 @@ import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView } from 
 import { theme } from './colors';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+const STORAGE_KEY = "@toDos";
+
 export default function App() { 
   const [working, setWorking] = useState(true); // work일때 상태를 저장하는 useState 함수 생성
   const [text, setText] = useState(""); // 입력한 Text의 상태를 저장하는 useState 함수 생성
@@ -12,8 +14,8 @@ export default function App() {
   const work = () => setWorking(true);  
   const onChangeText = (payload) => setText(payload); // payload = event
   const saveToDos = async (toSave) => {
-    await AsyncStorage.setItem("@toDos", JSON.stringify(toSave));
-  };
+    await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
+  }; 
   const addToDo = async () => {
     if(text === "") {
       return
