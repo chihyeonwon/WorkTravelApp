@@ -238,3 +238,82 @@ Object의 keys와 map 함수를 사용해서 사용자의 텍스트(toDos)를 �
     fontWeight:"500",
   }
 ```
+
+## Work와 Travel의 toDo 나누기
+
+newToDo의 work:working을 working으로 수정한다.
+```javascript
+const newToDos = { ...toDos, [Date.now()]: {text, working} };
+```
+
+삼항연산자를 사용해서 현재 toDo의 working이 지금 존재하는 working인지 확인하고 working에 따라 다른 화면을 보여주도록 구현한다.
+```javascript
+<ScrollView>
+            {Object.keys(toDos).map(key =>
+              toDos[key].working === working ? (
+              <View style={styles.toDo} key={key}>
+                <Text style={styles.toDoText}>
+                  {toDos[key].text}
+                </Text>
+              </View>
+              ) : null
+            )}
+</ScrollView>
+```
+
+## expo가 제공하는 AsyncStorage 모듈을 사용하여 사용자가 입력한 ToDo를 다른페이지로 이동하여도 없어지지 않도록 저장하기
+
+다음 코드를 터미널에서 실행하여 expo AsyncStorage를 설치한다.
+```javascript
+expo install @react-native-async-storage/async-storage
+```
+그 후 설치한 AsyncStorage를 import 해준다.
+```javascript
+import AsyncStorage from '@react-native-async-storage/async-storage';
+```
+현재 있는 ToDos를 string으로 바꾸고 setItem을 사용해서 브라우저의 로컬저장소처럼 저장하는 saveToDos 함수를 생성한다.
+```javascript
+const saveToDos = async (toSave) => {
+    await AsyncStorage.setItem("@toDos", JSON.stringify(toSave));
+};
+```
+
+saveToDos 함수에 newToDos를 비동기적으로 전달하기 위해 await를 사용한다.
+```javascript
+await saveToDos(newToDos);
+```
+
+addToDo 안에 await를 사용한 함수가 있기 때문에 addToDo에 async 키워드를 사용한다.
+```javascript
+const addToDo = async () => {
+    if(text === "") {
+      return
+    }
+    const newToDos = { ...toDos, [Date.now()]: {text, working} };
+    setText("");
+    await saveToDos(newToDos);
+    setToDos(newToDos);
+  }
+```
+
+Storage Key인 @toDos를 STORAGE_KEY 변수에 담고 이 변수를 setItem의 Storage Key로 사용한다.
+```javascript
+const STORAGE_KEY = "@toDos";
+
+await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
+```
+
+JSON의 parse를 사용하여 string을 Javascript Object로 바꾼 뒤 setToDos로 전달하는 loadToDos 함수 구현한다.
+```javascript
+const loadToDos = async() => {
+          const string = await AsyncStorage.getItem(STORAGE_KEY);
+          setToDos(JSON.parse(string);
+};
+```
+
+useEffect를 사용해서 화면이 렌더링 될 때 loadToDos 함수를 실행시키도록 설정한다.
+```javscript
+useEffect(() => {
+    loadToDos();
+  }, []);
+```
