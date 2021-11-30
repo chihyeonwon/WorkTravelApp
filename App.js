@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 import { theme } from './colors';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -10,6 +10,9 @@ export default function App() {
   const [working, setWorking] = useState(true); // work일때 상태를 저장하는 useState 함수 생성
   const [text, setText] = useState(""); // 입력한 Text의 상태를 저장하는 useState 함수 생성
   const [toDos, setToDos] = useState({}); // toDos의 상태를 저장하는 useState 함수 생성
+  useEffect(() => {
+    loadToDos
+  }, []);
   const travel = () => setWorking(false);
   const work = () => setWorking(true);  
   const onChangeText = (payload) => setText(payload); // payload = event
