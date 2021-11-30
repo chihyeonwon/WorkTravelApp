@@ -11,6 +11,9 @@ export default function App() {
   const travel = () => setWorking(false);
   const work = () => setWorking(true);  
   const onChangeText = (payload) => setText(payload); // payload = event
+  const saveToDos = async (toSave) => {
+    await AsyncStorage.setItem("@toDos", JSON.stringify(toSave));
+  };
   const addToDo = () => {
     if(text === "") {
       return
