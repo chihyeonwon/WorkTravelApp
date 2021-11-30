@@ -14,7 +14,7 @@ export default function App() {
     if(text === "") {
       return
     }
-    const newToDos = { ...toDos, [Date.now()]: {text, work: working} };
+    const newToDos = { ...toDos, [Date.now()]: {text, working} };
     setText("");
     setToDos(newToDos);
   }
