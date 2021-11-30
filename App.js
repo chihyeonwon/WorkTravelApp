@@ -11,7 +11,7 @@ export default function App() {
   const [text, setText] = useState(""); // 입력한 Text의 상태를 저장하는 useState 함수 생성
   const [toDos, setToDos] = useState({}); // toDos의 상태를 저장하는 useState 함수 생성
   useEffect(() => {
-    loadToDos
+    loadToDos();
   }, []);
   const travel = () => setWorking(false);
   const work = () => setWorking(true);  
@@ -27,10 +27,10 @@ export default function App() {
     if(text === "") {
       return
     }
-    const newToDos = { ...toDos, [Date.now()]: {text, working} };
-    setText("");
-    await saveToDos(newToDos);
+    const newToDos = { ...toDos, [Date.now()]: {text, working} }; 
     setToDos(newToDos);
+    await saveToDos(newToDos);
+    setText("");
   }
   return (
     <View style={styles.container}>
