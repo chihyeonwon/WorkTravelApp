@@ -509,3 +509,14 @@ const styles = StyleSheet.create({
   }
 });
 ```
+
+## Work Travel 어플리케이션 최종 테스트 화면
+
+#### Work 화면에서 'Work Travel 최종 테스트' 텍스트를 입력했을 때
+![KakaoTalk_20211201_164521473](https://user-images.githubusercontent.com/58906858/144192647-5ce6fdec-ab03-4a37-8135-53918816695c.jpg)
+
+#### 삭제 버튼을 눌렀을 때 취소버튼과 확인버튼이 나오는 화면
+![KakaoTalk_20211201_164521473_01](https://user-images.githubusercontent.com/58906858/144192649-a6252f59-1110-496e-a8ff-3a600112a422.jpg)
+
+#### 삭제버튼의 확인버튼을 눌렀을 때 'Work Travel 최종 테스트' 텍스트가 사라진 후의 화면
+![KakaoTalk_20211201_164521473_02](https://user-images.githubusercontent.com/58906858/144192656-39ee7767-c7b1-4bd7-b0f4-548e940b63b7.jpg)
