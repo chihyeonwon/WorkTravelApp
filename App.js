@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView, Alert } from 'react-native';
 import { theme } from './colors';
+import { Fontisto } from "@expo/vector-icons";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const STORAGE_KEY = "@toDos";
@@ -19,10 +20,14 @@ export default function App() {
   const saveToDos = async (toSave) => {
     await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
   }; 
-  const loadToDos = async() => {
-    const string = await AsyncStorage.getItem(STORAGE_KEY);
-    setToDos(JSON.parse(string));
-  };
+  async function loadToDos() {
+    try {
+      const jsonPayload = await AsyncStorage.getItem(STORAGE_KEY);
+      return jsonPayload != null ? setToDos(JSON.parse(jsonPayload)) : null;
+    } catch (error) {
+        console.log(error);
+    }
+}
   const addToDo = async () => {
     if(text === "") {
       return
@@ -31,7 +36,21 @@ export default function App() {
     setToDos(newToDos);
     await saveToDos(newToDos);
     setText("");
-  }
+  };
+  const deleteToDo = (key) => {
+    Alert.alert("Delete To Do", "Are you sure?", [
+      { text: "Cancel" },
+      {
+        text: "I'm Sure",
+        onPress: () => {
+          const newToDos = { ...toDos };
+          delete newToDos[key];
+          setToDos(newToDos);
+          saveToDos(newToDos);
+        },
+      },
+    ]);
+  };
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
@@ -59,10 +78,8 @@ export default function App() {
                 <Text style={styles.toDoText}>
                   {toDos[key].text}
                 </Text>
-                <TouchableOpacity>
-                  <Text>
-                    X
-                </Text>
+                <TouchableOpacity onPress={() => deleteToDo(key)}>
+                  <Fontisto name="trash" size={18} color={theme.grey} />
                 </TouchableOpacity>
               </View>
               ) : null
