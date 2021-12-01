@@ -59,6 +59,11 @@ export default function App() {
                 <Text style={styles.toDoText}>
                   {toDos[key].text}
                 </Text>
+                <TouchableOpacity>
+                  <Text>
+                    X
+                </Text>
+                </TouchableOpacity>
               </View>
               ) : null
             )}
@@ -97,6 +102,9 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingHorizontal: 20,
     borderRadius: 15,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   toDoText: {
     color: 'white',
